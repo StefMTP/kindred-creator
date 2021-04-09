@@ -11,7 +11,8 @@ const Kindred = () => {
     const [kindreds, setKindreds] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:5000/kindred/").then(res => setKindreds(res.data));
+        // http://localhost:5000/
+        axios.get("https://kindred-creator.herokuapp.com/kindred").then(res => setKindreds(res.data));
     }, [kindreds]);
 
     return (

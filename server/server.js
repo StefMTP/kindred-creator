@@ -25,7 +25,7 @@ mongoose.connect(
 app.use(express.json());
 app.use(cookie_parser());
 app.use(cors({
-    origin: ['http://localhost:3000'],
+    origin: ['https://kindred-creator.netlify.app'],
     credentials: true,
 }));
 

@@ -5,7 +5,8 @@ import axios from 'axios';
 const KindredItem = ({kindred}) => {
 
     const deleteKindred = () => {
-        axios.delete(`http://localhost:5000/kindred/${kindred._id}`);
+        // http://localhost:5000
+        axios.delete(`https://kindred-creator.herokuapp.com/kindred/${kindred._id}`);
     }
     return (
         <div className="list-group-item">
