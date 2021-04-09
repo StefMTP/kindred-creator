@@ -25,7 +25,7 @@ mongoose.connect(
 app.use(express.json());
 app.use(cookie_parser());
 app.use(cors({
-    origin: 'https://kindred-creator.netlify.app',
+    origin: '*',
     credentials: true,
 }));
 
