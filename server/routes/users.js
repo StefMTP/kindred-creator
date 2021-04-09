@@ -29,7 +29,7 @@ router.post('/register', [
 
                     jwt.sign({uid: user.id}, process.env.JWT_SECRET, {expiresIn: 3600}, (err, token) => {
                         if (err) return console.log(err);
-                        res.cookie('token', token, {httpOnly: true, sameSite: 'None'}).send();
+                        res.cookie('token', token, {httpOnly: true, sameSite: 'None', secure: true}).send();
                     });
                 });
             });
@@ -52,7 +52,7 @@ router.post('/login', [
                 if(!matches) return res.json({'errors': [{msg: 'Wrong username or password.'}]});
                 jwt.sign({uid: user.id}, process.env.JWT_SECRET, {expiresIn: 3600}, (err, token) => {
                     if (err) return console.log(err);
-                    res.cookie('token', token, {httpOnly: true, sameSite: 'None'}).send();
+                    res.cookie('token', token, {httpOnly: true, sameSite: 'None', secure: true}).send();
                 });
             });
         });
