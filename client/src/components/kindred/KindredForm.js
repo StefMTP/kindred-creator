@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 const KindredForm = () => {
+
+    const history = useHistory();
 
     const [name, setName] = useState('');
     const [concept, setConcept] = useState('');
@@ -27,9 +30,8 @@ const KindredForm = () => {
             // http://localhost:5000
             axios.post("https://kindred-creator.herokuapp.com/kindred/add", kindred).then(res => {
                 setMessage(res.data);
-                window.location = '/kindred';
+                history.push("/kindred");
             }).catch(res => console.log(res));
-            
         } catch(err) {
             console.log(err);
         }
