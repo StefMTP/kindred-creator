@@ -25,25 +25,19 @@ const KindredForm = () => {
                 desire
             };
             // http://localhost:5000
-            axios.post("https://kindred-creator.herokuapp.com/kindred/add", kindred).then(res => setMessage(res.data)).catch(res => console.log(res));
-            clearInputs();
+            axios.post("https://kindred-creator.herokuapp.com/kindred/add", kindred).then(res => {
+                setMessage(res.data);
+                window.location = '/kindred';
+            }).catch(res => console.log(res));
+            
         } catch(err) {
             console.log(err);
         }
     }
 
-    const clearInputs = () => {
-        setName('');
-        setConcept('');
-        setAge('');
-        setClan('Not determined');
-        setAmbition('');
-        setDesire('');
-    }
-
     return (
         <form onSubmit={handleSubmit}>
-            <h2 className="text-muted">Feel free to create multiple characters, if you can't limit yourself to one. Contact me to finalize your choice.</h2>
+            <h2 className="my-5 text-muted">Feel free to create multiple characters, if you can't limit yourself to one. Contact me to finalize your choice.</h2>
             {message ? (
                     <p className="alert alert-info" role="alert">
                         {message.success}

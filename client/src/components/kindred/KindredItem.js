@@ -1,13 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import axios from 'axios';
 
-const KindredItem = ({kindred}) => {
+const KindredItem = ({kindred, deleteKindred}) => {
 
-    const deleteKindred = () => {
-        // http://localhost:5000
-        axios.delete(`https://kindred-creator.herokuapp.com/kindred/${kindred._id}`);
-    }
     return (
         <div className="list-group-item">
             <div className="card bg-dark text-light">
@@ -32,7 +27,7 @@ const KindredItem = ({kindred}) => {
                         </div>)}
                 </div>
                 <div className="row justify-content-around m-4">
-                    <button className="btn btn-danger col-5" onClick={deleteKindred}>DELETE</button>
+                    <button className="btn btn-danger col-5" onClick={() => {deleteKindred(kindred._id)}}>DELETE</button>
                     <Link className="btn btn-warning col-5" to={"/edit/"+kindred._id}>EDIT</Link>
                 </div>
                 

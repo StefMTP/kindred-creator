@@ -1,20 +1,11 @@
-import React, {useState, useEffect, useContext} from 'react';
-import axios from 'axios';
+import React, {useContext} from 'react';
 import {AuthContext} from '../../contexts/AuthContext';
-import KindredForm from './KindredForm';
 import KindredList from './KindredList';
 
 const Kindred = () => {
 
     const {uid, loggedIn} = useContext(AuthContext);
     
-    const [kindreds, setKindreds] = useState([]);
-
-    useEffect(() => {
-        // http://localhost:5000/
-        axios.get("https://kindred-creator.herokuapp.com/kindred").then(res => setKindreds(res.data));
-    }, [kindreds]);
-
     return (
         <>
             {
@@ -26,8 +17,7 @@ const Kindred = () => {
             {
                 loggedIn === true && (
                     <>
-                        <KindredList kindreds={kindreds} uid={uid}/>
-                        <KindredForm />
+                        <KindredList uid={uid}/>
                     </>)
             }
         </>

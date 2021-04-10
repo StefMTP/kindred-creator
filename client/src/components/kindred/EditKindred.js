@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const EditKindred = (props) => {
-
-    const history = useHistory();
 
     const [name, setName] = useState('');
     const [concept, setConcept] = useState('');
@@ -39,8 +36,8 @@ const EditKindred = (props) => {
                 desire
             };
             // http://localhost:5000/
-            axios.post("https://kindred-creator.herokuapp.com/kindred/edit/"+props.match.params.id, kindred).catch(res => console.log(res));
-            history.push('/kindred');
+            axios.post("https://kindred-creator.herokuapp.com/kindred/edit/"+props.match.params.id, kindred).then(res => window.location = '/kindred');
+            
         } catch(err) {
             console.log(err);
         }

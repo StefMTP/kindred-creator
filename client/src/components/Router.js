@@ -5,6 +5,7 @@ import Register from './auth/Register';
 import Login from './auth/Login';
 import Kindred from './kindred/Kindred';
 import EditKindred from './kindred/EditKindred';
+import KindredForm from './kindred/KindredForm';
 
 const Router = () => {
 
@@ -24,6 +25,7 @@ const Router = () => {
                     </Route>
                     <Route path="/edit/:id" component={EditKindred}>
                     </Route>
+                    <Route path="/create" component={KindredForm}></Route>
                     <Route path="/register">
                         <Register />
                     </Route>
