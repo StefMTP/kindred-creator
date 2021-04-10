@@ -63,7 +63,9 @@ router.post('/login', [
 router.get('/logout', (req, res) => {
     res.cookie('token', '', {
         httpOnly: true,
-        expires: new Date(0)
+        expires: new Date(0), 
+        sameSite: 'None', 
+        secure: true
     }).send();
 });
 
