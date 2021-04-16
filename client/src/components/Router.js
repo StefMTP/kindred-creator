@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route} from 'react-router-dom';
 import Navbar from './Navbar';
+import Home from './Home';
 import Register from './auth/Register';
 import Login from './auth/Login';
 import Kindred from './kindred/Kindred';
@@ -15,10 +16,7 @@ const Router = () => {
             <div className="container">
                 <Switch>
                     <Route path="/" exact>
-                        <div className="jumbotron">
-                            <h1 className="display-4">Home</h1>
-                            <p className="lead">This is an app about making a vampire</p>
-                        </div>
+                        <Home />
                     </Route>
                     <Route path="/kindred">
                         <Kindred />

@@ -10,6 +10,7 @@ const KindredItem = ({kindred, deleteKindred}) => {
                     <div className=""> 
                         <h3>{kindred.name}</h3>
                         {kindred.age && <p className="text-muted">{kindred.age} years old</p>}
+                        <p className="text-muted font-italic">Will start the game as a {kindred.start}.</p>
                     </div>
                         {kindred.clan !== "Not determined" && <p className="lead">Clan {kindred.clan}</p>}
                 </div>

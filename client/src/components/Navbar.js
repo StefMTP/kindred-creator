@@ -12,10 +12,10 @@ const Navbar = () => {
             <Link className="navbar-brand" to="/">Home</Link>
             <ul className="navbar-nav mr-auto">
                 <li className="nav-item"><Link className="nav-link" to="/kindred">Kindred</Link></li>
-                <li className="nav-item"><Link className="nav-link" to="/create">Create new Kindred</Link></li>
                 <>{
                     loggedIn === true && (
                         <>
+                            <li className="nav-item"><Link className="nav-link" to="/create">Create new Kindred</Link></li>
                             <li className="nav-item"><Logout /></li>
                         </>
                     )
