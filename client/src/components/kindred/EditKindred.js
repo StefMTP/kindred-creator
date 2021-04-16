@@ -36,6 +36,7 @@ const EditKindred = (props) => {
             const kindred = {
                 name,
                 concept,
+                start,
                 age,
                 clan,
                 ambition,
@@ -75,9 +76,12 @@ const EditKindred = (props) => {
                                 <label>Your character will start as a: </label>
                                 <div className="form-check">
                                     <input className="form-check-input" type="radio" id="start1" value="Human" checked={start === "Human"} onChange={(e) => setStart(e.target.value)}/>
+                                    <label className="form-check-label" htmlFor="start1">Human</label>
+
                                 </div>
                                 <div className="form-check">
                                     <input className="form-check-input" type="radio" id="start2" value="Vampire" checked={start === "Vampire"} onChange={(e) => setStart(e.target.value)}/>
+                                    <label className="form-check-label" htmlFor="start2">Vampire</label>
                                 </div>
                             </div>
                         </fieldset>
