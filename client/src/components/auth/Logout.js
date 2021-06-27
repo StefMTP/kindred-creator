@@ -9,8 +9,8 @@ const Logout = () => {
     const {getLoggedIn} = useContext(AuthContext);
 
     const handleClick = () => {
-        // http://localhost:5000/
-        axios.get('https://kindred-creator.herokuapp.com/auth/logout').then(res => {
+        // https://kindred-creator.herokuapp.com/
+        axios.get('http://localhost:5000/auth/logout').then(res => {
             getLoggedIn();
             history.push('/');
         });

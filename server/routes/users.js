@@ -23,11 +23,11 @@ router.post('/register', [
         bcrypt.genSalt(10, (err, salt) => {
             bcrypt.hash(req.body.password1, salt, (err, hash) => {
                 if (err) return console.log(err);
-                const user = new User({username: req.body.username, passwordHash: hash});
+                const user = new User({username: req.body.username, passwordHash: hash, is_admin: false});
                 user.save((err) => {
                     if (err) return console.log(err);
 
-                    jwt.sign({uid: user.id}, process.env.JWT_SECRET, {expiresIn: 3600}, (err, token) => {
+                    jwt.sign({uid: user.id, is_admin: user.is_admin}, process.env.JWT_SECRET, {expiresIn: 3600}, (err, token) => {
                         if (err) return console.log(err);
                         res.cookie('token', token, {httpOnly: true, sameSite: 'None', secure: true}).send();
                     });
@@ -50,7 +50,7 @@ router.post('/login', [
             if(!user) return res.json({'errors': [{msg: 'Wrong username or password.'}]});
             bcrypt.compare(req.body.password, user.passwordHash).then(matches => {
                 if(!matches) return res.json({'errors': [{msg: 'Wrong username or password.'}]});
-                jwt.sign({uid: user.id}, process.env.JWT_SECRET, {expiresIn: 3600}, (err, token) => {
+                jwt.sign({uid: user.id, is_admin: user.is_admin}, process.env.JWT_SECRET, {expiresIn: 3600}, (err, token) => {
                     if (err) return console.log(err);
                     res.cookie('token', token, {httpOnly: true, sameSite: 'None', secure: true}).send();
                 });
@@ -84,7 +84,7 @@ router.get('/loggedIn', (req, res) => {
         const sum = jwt.verify(token, process.env.JWT_SECRET);
 
         // if all other checks are ok, we can go on and send true
-        User.findById(sum.uid, (err, user) => res.send({loggedIn: true, uid: user.id, uname: user.username}));
+        User.findById(sum.uid, (err, user) => res.send({loggedIn: true, uid: user.id, uname: user.username, is_admin: user.is_admin}));
         
     } catch(err) {
         // if something went wrong, that means the token is not valid

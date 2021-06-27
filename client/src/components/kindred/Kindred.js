@@ -4,7 +4,7 @@ import KindredList from './KindredList';
 
 const Kindred = () => {
 
-    const {uid, loggedIn} = useContext(AuthContext);
+    const {uid, isAdmin, loggedIn} = useContext(AuthContext);
     
     return (
         <>
@@ -17,7 +17,7 @@ const Kindred = () => {
             {
                 loggedIn === true && (
                     <>
-                        <KindredList uid={uid}/>
+                        <KindredList uid={uid} isAdmin={isAdmin}/>
                     </>)
             }
         </>

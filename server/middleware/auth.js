@@ -14,7 +14,10 @@ const auth = (req, res, next) => {
 
         // if not, then we verify the token to get the user id (if it's verifiable, if not an error will be caught) and pass it in the request to follow
         const verified = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = verified.uid;
+        req.user = {
+            uid: verified.uid,
+            is_admin: verified.is_admin
+        };
         next();
 
     } catch(err) {

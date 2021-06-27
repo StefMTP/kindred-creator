@@ -18,8 +18,8 @@ const EditKindred = (props) => {
     const clanOptions = ['Not determined', 'Brujah', 'Gangrel', 'Malkavian', 'Nosferatu', 'Toreador', 'Tremere', 'Ventrue', 'Caitiff', 'Thin-Blooded'];
 
     useEffect(() => {
-        // http://localhost:5000
-        axios.get("https://kindred-creator.herokuapp.com/kindred/"+props.match.params.id).then(res => {
+        // https://kindred-creator.herokuapp.com
+        axios.get("http://localhost:5000/kindred/"+props.match.params.id).then(res => {
             setName(res.data.name);
             setConcept(res.data.concept);
             setStart(res.data.start);
@@ -42,8 +42,8 @@ const EditKindred = (props) => {
                 ambition,
                 desire
             };
-            // http://localhost:5000/
-            axios.post("https://kindred-creator.herokuapp.com/kindred/edit/"+props.match.params.id, kindred).then(res => history.push("/kindred"));
+            // https://kindred-creator.herokuapp.com/
+            axios.post("http://localhost:5000/kindred/edit/"+props.match.params.id, kindred).then(res => history.push("/kindred"));
             
         } catch(err) {
             console.log(err);

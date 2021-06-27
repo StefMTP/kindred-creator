@@ -4,7 +4,7 @@ const Grave = require('../models/grave.model');
 const auth = require('../middleware/auth');
 
 // GET ALL KINDRED
-router.get('/', (req, res) => {
+router.get('/', auth, (req, res) => {
     try {
         Kindred.find({}, (err, kindreds) => {
             if (err) return res.status(400).json({'error': 'something went wrong'});
@@ -34,7 +34,7 @@ router.post('/add', auth, (req, res) => {
     try {
         const { name, concept, start, age, clan, ambition, desire } = req.body;
 
-        const newKindred = new Kindred({ name, concept, start, age, clan, ambition, desire, player_id: req.user });
+        const newKindred = new Kindred({ name, concept, start, age, clan, ambition, desire, player_id: req.user.uid });
 
         newKindred.save((err, kindred) => {
             if(err) return console.log(err);
