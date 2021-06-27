@@ -19,7 +19,7 @@ const EditKindred = (props) => {
 
     useEffect(() => {
         // https://kindred-creator.herokuapp.com
-        axios.get("http://localhost:5000/kindred/"+props.match.params.id).then(res => {
+        axios.get("https://kindred-creator.herokuapp.comkindred/"+props.match.params.id).then(res => {
             setName(res.data.name);
             setConcept(res.data.concept);
             setStart(res.data.start);
@@ -43,7 +43,7 @@ const EditKindred = (props) => {
                 desire
             };
             // https://kindred-creator.herokuapp.com/
-            axios.post("http://localhost:5000/kindred/edit/"+props.match.params.id, kindred).then(res => history.push("/kindred"));
+            axios.post("https://kindred-creator.herokuapp.comkindred/edit/"+props.match.params.id, kindred).then(res => history.push("/kindred"));
             
         } catch(err) {
             console.log(err);

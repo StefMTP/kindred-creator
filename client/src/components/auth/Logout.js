@@ -10,7 +10,7 @@ const Logout = () => {
 
     const handleClick = () => {
         // https://kindred-creator.herokuapp.com/
-        axios.get('http://localhost:5000/auth/logout').then(res => {
+        axios.get('https://kindred-creator.herokuapp.comauth/logout').then(res => {
             getLoggedIn();
             history.push('/');
         });

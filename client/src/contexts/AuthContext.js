@@ -16,7 +16,7 @@ const AuthContextProvider = (props) => {
 
     const getLoggedIn = () => {
         // https://kindred-creator.herokuapp.com
-        axios.get('http://localhost:5000/auth/loggedIn').then(res => {
+        axios.get('https://kindred-creator.herokuapp.comauth/loggedIn').then(res => {
             setLoggedIn(res.data.loggedIn);
             setUid(res.data.uid);
             setUname(res.data.uname);

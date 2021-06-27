@@ -32,7 +32,7 @@ const KindredForm = () => {
                 desire
             };
             // https://kindred-creator.herokuapp.com
-            axios.post("http://localhost:5000/kindred/add", kindred).then(res => {
+            axios.post("https://kindred-creator.herokuapp.comkindred/add", kindred).then(res => {
                 setMessage(res.data);
                 history.push("/kindred");
             }).catch(res => console.log(res));
