@@ -24,7 +24,7 @@ const Login = () => {
                 password,
             };
             // https://kindred-creator.herokuapp.com
-            axios.post('https://kindred-creator.herokuapp.comauth/login', user).then(res => {
+            axios.post('https://kindred-creator.herokuapp.com/auth/login', user).then(res => {
                 setMessages(res.data);
                 getLoggedIn();
             }).catch(res => console.log(res));

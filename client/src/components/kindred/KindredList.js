@@ -8,12 +8,12 @@ const KindredList = ({uid, isAdmin}) => {
 
     useEffect(() => {
         // https://kindred-creator.herokuapp.com/
-        axios.get("https://kindred-creator.herokuapp.comkindred").then(res => setKindreds(res.data));
+        axios.get("https://kindred-creator.herokuapp.com/kindred").then(res => setKindreds(res.data));
     }, []);
 
     const deleteKindred = (id) => {
         // https://kindred-creator.herokuapp.com
-        axios.delete(`https://kindred-creator.herokuapp.comkindred/${id}`);
+        axios.delete(`https://kindred-creator.herokuapp.com/kindred/${id}`);
         setKindreds(kindreds.filter(kindred => kindred._id !== id));
     }
 

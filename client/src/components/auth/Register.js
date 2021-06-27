@@ -26,7 +26,7 @@ const Register = () => {
                 password2
             };
             // https://kindred-creator.herokuapp.com/
-            axios.post('https://kindred-creator.herokuapp.comauth/register', user).then(res => {
+            axios.post('https://kindred-creator.herokuapp.com/auth/register', user).then(res => {
                 setMessages(res.data);
                 getLoggedIn();
             }).catch(res => console.log(res));
